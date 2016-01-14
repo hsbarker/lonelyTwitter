@@ -39,6 +39,16 @@ public class LonelyTwitterActivity extends Activity {
 			public void onClick(View v) {
 				setResult(RESULT_OK);
 				String text = bodyText.getText().toString();
+				Tweet newestTweet = new NormalTweet(text);
+				try {
+					newestTweet.setMessage("Length abiding message");
+				} catch (Exception e) {
+					System.err.print("This text was too long : " + text);
+				}
+				if (newestTweet.isImportant()){
+					
+				}
+				//newestTweet.getmessage();
 				saveInFile(text, new Date(System.currentTimeMillis()));
 				finish();
 

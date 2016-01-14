@@ -5,16 +5,33 @@ import java.util.Date;
 /**
  * Created by hsbarker on 1/14/16.
  */
-public class Tweet {
-    private String message;
+public abstract class Tweet {
+    protected String message;
     private Date date;
 
-    public Tweet(String message,Date date) {
+    public Tweet(String message, Date date) {
         this.message = message;
         this.date = date;
     }
 
+
     public Tweet(String message) {
         this.message = message;
+        this.date = new Date(System.currentTimeMillis());
+
     }
+
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setMessage(String message) throws TweetTooLongException()
+    {
+        if (message.length() > 140) {
+            throw new TweetTooLongException;
+        }
+        this.message = message;
+    }
+
 }
