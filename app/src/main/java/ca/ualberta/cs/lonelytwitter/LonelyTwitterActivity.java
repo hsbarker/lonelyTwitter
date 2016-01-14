@@ -27,6 +27,7 @@ public class LonelyTwitterActivity extends Activity {
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
+
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 
@@ -46,7 +47,7 @@ public class LonelyTwitterActivity extends Activity {
 					System.err.print("This text was too long : " + text);
 				}
 				if (newestTweet.isImportant()){
-					
+
 				}
 				//newestTweet.getmessage();
 				saveInFile(text, new Date(System.currentTimeMillis()));
