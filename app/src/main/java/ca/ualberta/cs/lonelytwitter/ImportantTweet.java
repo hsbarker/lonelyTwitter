@@ -11,7 +11,7 @@ public class ImportantTweet extends Tweet implements Tweetable{
         return "IMPORTANT" + this.getMessage();
     }
     @Override
-    public boolean isimportant(){
+    public boolean isImportant(){
         return true;
     }
 }
