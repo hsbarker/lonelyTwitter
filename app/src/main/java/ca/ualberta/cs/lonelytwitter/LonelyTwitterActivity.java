@@ -11,6 +11,7 @@ import java.io.OutputStreamWriter;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Scanner;
 
 import android.app.Activity;
 import android.content.Context;
@@ -66,6 +67,10 @@ public class LonelyTwitterActivity extends Activity {
 				tweets.add(newestTweet);
 				adapter.notifyDataSetChanged();
 				saveInFile();
+				//Scanner in = new Scanner(System.in);
+//
+			//	System.out.println("Enter the station");
+			//	String station = in.nextLine();
 
 			}
 		});

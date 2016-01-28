@@ -25,6 +25,7 @@ public abstract class Tweet {
     public Date getDate() {
         return date;
     }
+    public String getMessage(){return this.message;}
 
     public void setMessage(String message) throws Exception
     {
