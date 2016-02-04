@@ -5,6 +5,7 @@ import java.util.Date;
 
 /**
  * Created by hsbarker on 1/14/16.
+ * This class allows the user to apply a mood to their tweets.
  */
 public abstract class Mood {
     public String CurrentMood;

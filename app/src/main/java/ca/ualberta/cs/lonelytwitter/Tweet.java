@@ -5,6 +5,8 @@ import java.util.Date;
 
 /**
  * Created by hsbarker on 1/14/16.
+ * This is the basic class for tweets that stores the basic information about a tweet.
+ * It checks to make sure the user entered a valid tweet and stores it with the current date.
  */
 public abstract class Tweet {
     protected String message;

@@ -8,6 +8,10 @@ import java.util.Date;
 
 /**
  * Created by hsbarker on 1/28/16.
+ * This class stores a set of tweets in the form of an array.
+ * @see Tweet
+ * This class provides methods to allow the rest of
+ * the application to access the list for usage and changes.
  */
 public class TweetList
 {

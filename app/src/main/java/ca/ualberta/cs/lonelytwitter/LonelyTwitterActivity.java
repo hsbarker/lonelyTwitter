@@ -15,6 +15,7 @@ import java.util.Scanner;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -25,16 +26,104 @@ import android.widget.ListView;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+/**
+ * The main activity for a small Twitter app to capture, <br>notes and comments.
+ * <p>It saves the input tweets in the form of json files.</p><br>
+ *     A sample code is as: <br>
+ *         <code>
+ *             for (int i = 0; i < 10; i++){
+ *                 for (j = 0; j < i; j++){
+ *                     doSomething();
+ *                 }
+ *             }
+ *         </code>
+ * The list of important activities in this class are as follows:<br>
+ *     <ul>
+ *         <li>Show user the saved tweets on screen.</li>
+ *         <li>Allow user to type in new tweets.</li>
+ *         <li>Allow user to click a save button to save his newly created tweet.</li>
+ *         <li>Allow user to clear his/her list of saved tweets.</li>
+ *     </ul>
+ * @see NormalTweet
+ * @see java.awt
+ * @author hsbarker
+ * @version 2.1
+ */
 public class LonelyTwitterActivity extends Activity {
 
+	/**
+	 * @see Tweet
+	 */
+
+	static int MAXIMUM_TWEET_SIZE = 100;
 	private static final String FILENAME = "file.sav";
 	private EditText bodyText;
 	private ListView oldTweetsList;
 
 	private ArrayList<Tweet> tweets = new ArrayList<Tweet>();
 	private ArrayAdapter<Tweet> adapter;
-	
-	/** Called when the activity is first created. */
+
+	private int calculateTweetSize(){
+		return -1;
+	}
+
+	/**
+	 *
+	 * @param text1 The text for the directory name
+	 * @param text2 The file name
+	 * @param text3 The extension
+	 * @param text4
+	 * @return concatenation of ...
+	 * @throws
+	 * @exception IllegalAccessError
+	 * This happens if,,,
+	 * @exception IllegalArgumentException
+	 * This happens if,,,
+	 * @deprecated
+	 */
+	public String doSomething(String text1, String text2, String text3, String text4){
+		return  "";
+	}
+
+	public String removeStopWords(String text){
+		String expression1 = "",
+				expression2 = "",
+				expression3 = "",
+				expression4 = "";
+		int count = 10;
+		String expression = doSomething(expression1, expression2,
+				doSomething(expression3, expression4, expression3,
+						expression4), expression1);
+
+		for (int i = 0; i < count; i++){
+			try{
+				int j = 1;
+				int k = 2;
+				int count2 = 0;
+				if (j < k) {
+					doSomething("", "", "", "");
+				}
+				else if (true) {
+					doSomething("a", "", "", "");
+				}
+			}
+			catch (Exception e){}
+		}
+		return "";
+	}
+
+	private void startSecondActivity(Intent intent){
+
+	}
+
+	protected boolean evatluateOtherActivity(Intent intent){
+		return true;
+	}
+
+	/**
+	 * Called when the activity is first created.
+	 * Stores the functions with the buttons with
+	 * the ability to store the users new tweets or delete them.*/
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 
@@ -87,6 +176,11 @@ public class LonelyTwitterActivity extends Activity {
 		});
 	}
 
+	/**
+	 * Called when the app starts.
+	 * Applies the list of tweets stored in Json to a viewable list object.
+	 * @ loadFromFile
+	 */
 	@Override
 	protected void onStart() {
 		// TODO Auto-generated method stub
@@ -97,6 +191,10 @@ public class LonelyTwitterActivity extends Activity {
 		oldTweetsList.setAdapter(adapter);
 	}
 
+	/**Called when the app starts.
+	 * Loads the list of saved tweets from Json for the user.
+	 * Creates a new list of tweets in case there is no saved tweets.
+	 */
 	private void loadFromFile() {
 		//ArrayList<String> tweets = new ArrayList<String>();
 		try {
@@ -120,7 +218,12 @@ public class LonelyTwitterActivity extends Activity {
 		}
 //		return tweets.toArray(new String[tweets.size()]);
 	}
-	
+
+	/**
+	 * Applied when the save button is pressed by the user.
+	 * This class stores the users tweet in Json.
+	 * Checks to make sure there is a file to save to.
+	 */
 	private void saveInFile() {
 		try {
 			FileOutputStream fos = openFileOutput(FILENAME,
