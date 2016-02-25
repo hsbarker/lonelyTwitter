@@ -35,10 +35,9 @@ public class ElasticsearchTweetController {
             // will be used.
             String search_string;
             if(search_strings[0] != "") {
-                //search_string = "{\"from\" : 0, \"size\" : 10000,\"query\":{\"match\":{\"message\":\"" + search_strings[0] + "\"}}}";
                 search_string = "{\"query\":{\"match\":{\"message\":\"" + search_strings[0] + "\"}}}";
             } else {
-                search_string = "{\"from\" : 0, \"size\" : 100}";
+                search_string = "{\"from\" : 0, \"size\" : 10}";
             }
 
             Search search = new Search.Builder(search_string)
