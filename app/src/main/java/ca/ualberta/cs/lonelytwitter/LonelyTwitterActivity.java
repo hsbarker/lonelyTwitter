@@ -67,8 +67,9 @@ public class LonelyTwitterActivity extends Activity {
                 tweets.add(latestTweet);
 
                 latestTweet.addThumbnail(thumbnail);
-
                 adapter.notifyDataSetChanged();
+
+
 
                 // Add the tweet to Elasticsearch
                 ElasticsearchTweetController.AddTweetTask addTweetTask = new ElasticsearchTweetController.AddTweetTask();
@@ -79,8 +80,30 @@ public class LonelyTwitterActivity extends Activity {
                 thumbnail = null;
 
                 setResult(RESULT_OK);
+                update();
             }
         });
+    }
+
+    private void update(){
+        ElasticsearchTweetController.GetTweetsTask getTweetsTask = new ElasticsearchTweetController.GetTweetsTask();
+//        getTweetsTask.execute("test");
+        getTweetsTask.execute("");
+        try {
+            tweets = new ArrayList<Tweet>();
+            tweets.addAll(getTweetsTask.get());
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+
+//        adapter = new ArrayAdapter<Tweet>(this, R.layout.list_item, tweets);
+        // Binds tweet list with view, so when our array updates, the view updates with it
+        adapter = new TweetAdapter(this, tweets); /* NEW! */
+        oldTweetsList.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+        onStart();
     }
 
     @Override
